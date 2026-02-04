@@ -1,0 +1,20 @@
+/* 
+ * Meet Mic Popup Hider - CSS Fallback
+ * These rules target common patterns for the "Microphone muted by system" popup
+ * The content script handles most cases, but CSS provides additional coverage
+ */
+
+/* Hide any alert/dialog containing the muted text */
+/* Note: We can't target by text content in CSS, so these are structural fallbacks */
+
+/* Google Meet often uses role="alert" for these notifications */
+[role="alert"]:has(button[aria-label*="Close"]),
+[role="alertdialog"]:has(button[aria-label*="Close"]) {
+  /* We don't hide all alerts, the JS handles the specific one */
+}
+
+/* 
+ * If you need to add specific selectors after inspecting the DOM,
+ * add them below. Google Meet uses obfuscated class names that change,
+ * so text-based detection in JS is more reliable.
+ */
